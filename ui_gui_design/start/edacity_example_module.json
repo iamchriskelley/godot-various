@@ -1,0 +1,57 @@
+{
+  "last_updated": "2022/12/21 02:49:00 EST",
+  "notes": [
+    "need specifiers to override component label details",
+    "hi"
+  ],
+  "uid": "demo_module_000002",
+  "name": "PRISMO_light_driver_v2",
+  "description": "candidate uc-based light driver for the PRISMO field spectrometer",
+  "syntax": "verbose",
+  "types": {
+	  "thing_types":{
+		  "component_types":[],
+		  "connection_types":[]
+	  },
+	  "layers":[],
+	  "text_styles":[],
+	  "trace_styles":[]
+  },
+  "things":{
+	"syntax":"type_reference",
+	"components":[
+		{"ref_des":"C1", "place":[], "rotation":0,"layer":1, "component_type":"capacitor", "package":"0603", "model":"C0603"}
+	],
+	"connections":[
+		{"ref_des":"foo", "connection_type":"power","connection_pairs_set":[],"vias_set":[]}
+	],
+	"labels":[
+		{"text_style":"foo", "layout_style":"foo", "text":"bar", "type":"foo", "layer":1, "placement":[], "rotation":0}
+	],
+	"media":{
+		"images":[],
+		"videos":[],
+		"documents":[],
+		"models":[],
+		"xr":[]
+	},
+	"borders":[
+		{"border_type":"foo", "coordinate_set":[]}
+	],
+	"holes":[
+		{"radius":0.1, "setback":0.006, "placement":[], "plating":"true"}
+	],
+	"other":{}
+  },
+  "rules":{
+	  "units":{
+		  "length":"in",
+		  "rotation":"deg"
+	  },
+	  "groups":{},
+	  "drc":{},
+	  "erc":{},
+	  "default_behaviors":{}
+  },
+  "metadata":{}
+}

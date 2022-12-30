@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scenes/GameManager.gd" type="Script" id=1]
+[ext_resource path="res://scenes/OpenDialog.tscn" type="PackedScene" id=2]
+
+[node name="Node" type="Node"]
+script = ExtResource( 1 )
+
+[node name="Control" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="JSONGetSet" parent="Control" instance=ExtResource( 2 )]
+
+[node name="TextEdit" type="TextEdit" parent="Control"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -500.0
+margin_top = -500.0
+grow_horizontal = 0
+grow_vertical = 0
+rect_min_size = Vector2( 500, 500 )

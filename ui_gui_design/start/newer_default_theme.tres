@@ -1,0 +1,52 @@
+[gd_resource type="Theme" load_steps=6 format=2]
+
+[ext_resource path="res://edacity_font.tres" type="DynamicFontData" id=1]
+
+[sub_resource type="StyleBoxFlat" id=2]
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 1, 1, 1, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.247059, 0.247059, 0.247059, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="DynamicFont" id=4]
+size = 32
+outline_color = Color( 0.388235, 0.376471, 0.376471, 1 )
+use_mipmaps = true
+use_filter = true
+extra_spacing_top = 5
+font_data = ExtResource( 1 )
+
+[resource]
+Button/styles/hover = SubResource( 2 )
+Button/styles/normal = SubResource( 1 )
+Button/styles/pressed = SubResource( 3 )
+GridContainer/constants/hseparation = 7
+GridContainer/constants/vseparation = 5
+Label/colors/font_color = Color( 0.466667, 0.439216, 0.439216, 1 )
+Label/fonts/font = SubResource( 4 )

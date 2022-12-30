@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://CameraWithShader.tscn" type="PackedScene" id=1]
+[ext_resource path="res://shader_on_off.gd" type="Script" id=2]
 
 [sub_resource type="SphereMesh" id=1]
 
@@ -10,8 +11,22 @@ roughness = 0.08
 
 [node name="Spatial" type="Spatial"]
 
+[node name="Control" type="Control" parent="."]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_top = -20.0
+margin_right = 40.0
+margin_bottom = 20.0
+
+[node name="CheckButton" type="CheckButton" parent="Control"]
+margin_right = 76.0
+margin_bottom = 40.0
+script = ExtResource( 2 )
+
 [node name="MeshInstance" type="MeshInstance" parent="."]
 mesh = SubResource( 1 )
 material/0 = SubResource( 2 )
 
 [node name="CameraWithShader" parent="." instance=ExtResource( 1 )]
+
+[connection signal="toggled" from="Control/CheckButton" to="Control/CheckButton" method="_on_CheckButton_toggled"]

@@ -1,0 +1,37 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://nine_light_yellow.png" type="Texture" id=1]
+[ext_resource path="res://newer_default_theme.tres" type="Theme" id=2]
+[ext_resource path="res://scenes/GameStateLabel.gd" type="Script" id=3]
+
+[node name="GameStateLabel" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+script = ExtResource( 3 )
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -200.0
+margin_bottom = 120.0
+rect_min_size = Vector2( 200, 120 )
+texture = ExtResource( 1 )
+patch_margin_left = 61
+patch_margin_top = 55
+patch_margin_right = 56
+patch_margin_bottom = 57
+
+[node name="Label" type="Label" parent="NinePatchRect"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -60.5
+margin_top = -20.35
+margin_right = 60.5
+margin_bottom = 20.35
+theme = ExtResource( 2 )
+text = "HELLO"
+align = 1
+valign = 1

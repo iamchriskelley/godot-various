@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://scenes/GameStateLabel.tscn" type="PackedScene" id=1]
+[ext_resource path="res://ButtonGrid.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/OpenDialog.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/ButtonFlowGrid.tscn" type="PackedScene" id=4]
+
+[node name="Edacity_UI_mockup_0" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="ButtonGrid" parent="." instance=ExtResource( 2 )]
+visible = false
+
+[node name="ButtonFlowGrid" parent="." instance=ExtResource( 4 )]
+
+[node name="GameStateLabel" parent="." instance=ExtResource( 1 )]
+
+[node name="OpenDialog" parent="." instance=ExtResource( 3 )]

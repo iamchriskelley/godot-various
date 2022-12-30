@@ -1,0 +1,80 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://test_theme.tres" type="Theme" id=1]
+[ext_resource path="res://3d_room.tscn" type="PackedScene" id=2]
+
+[sub_resource type="DynamicFontData" id=5]
+override_oversampling = 3.0
+font_path = "res://fonts/Manrope/static/Manrope-Regular.ttf"
+
+[sub_resource type="DynamicFont" id=3]
+size = 48
+font_data = SubResource( 5 )
+
+[sub_resource type="DynamicFontData" id=6]
+override_oversampling = 3.0
+font_path = "res://fonts/Manrope/static/Manrope-Regular.ttf"
+
+[sub_resource type="DynamicFont" id=4]
+size = 32
+font_data = SubResource( 6 )
+
+[node name="StartMenu" type="CanvasLayer"]
+
+[node name="Menu" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="MarginContainer" type="MarginContainer" parent="Menu"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 1 )
+custom_constants/margin_top = 80
+custom_constants/margin_left = 60
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Menu/MarginContainer"]
+margin_left = 60.0
+margin_top = 80.0
+margin_right = 1024.0
+margin_bottom = 600.0
+
+[node name="lblTitle" type="Label" parent="Menu/MarginContainer/VBoxContainer"]
+margin_right = 238.0
+margin_bottom = 66.0
+size_flags_horizontal = 0
+custom_fonts/font = SubResource( 3 )
+text = "Game Title"
+
+[node name="MarginContainer" type="MarginContainer" parent="Menu/MarginContainer/VBoxContainer"]
+margin_top = 70.0
+margin_right = 964.0
+margin_bottom = 150.0
+rect_min_size = Vector2( 0, 80 )
+
+[node name="btnStart" type="Button" parent="Menu/MarginContainer/VBoxContainer"]
+margin_top = 154.0
+margin_right = 166.667
+margin_bottom = 198.0
+size_flags_horizontal = 0
+custom_fonts/font = SubResource( 4 )
+text = "Start Game"
+
+[node name="btnSettings" type="Button" parent="Menu/MarginContainer/VBoxContainer"]
+margin_top = 202.0
+margin_right = 125.667
+margin_bottom = 246.0
+size_flags_horizontal = 0
+custom_fonts/font = SubResource( 4 )
+text = "Settings"
+
+[node name="btnQuit" type="Button" parent="Menu/MarginContainer/VBoxContainer"]
+margin_top = 250.0
+margin_right = 62.0
+margin_bottom = 294.0
+size_flags_horizontal = 0
+custom_fonts/font = SubResource( 4 )
+text = "Quit"
+
+[node name="Background" type="Spatial" parent="."]
+
+[node name="Spatial" parent="Background" instance=ExtResource( 2 )]

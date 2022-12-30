@@ -1,0 +1,129 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://test_theme.tres" type="Theme" id=1]
+
+[sub_resource type="QuadMesh" id=1]
+
+[sub_resource type="SpatialMaterial" id=2]
+albedo_color = Color( 0.054902, 0.4, 0.156863, 1 )
+
+[sub_resource type="CubeMesh" id=3]
+
+[sub_resource type="SpatialMaterial" id=4]
+albedo_color = Color( 0.992157, 1, 0, 1 )
+metallic = 0.9
+roughness = 0.05
+
+[sub_resource type="DynamicFontData" id=5]
+override_oversampling = 3.0
+font_path = "res://fonts/Manrope/static/Manrope-Regular.ttf"
+
+[sub_resource type="DynamicFont" id=6]
+size = 48
+font_data = SubResource( 5 )
+
+[sub_resource type="DynamicFontData" id=7]
+override_oversampling = 3.0
+font_path = "res://fonts/Manrope/static/Manrope-Regular.ttf"
+
+[sub_resource type="DynamicFont" id=8]
+size = 32
+font_data = SubResource( 7 )
+
+[node name="Spatial" type="Spatial"]
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+transform = Transform( 2, 0, 0, 0, -8.74228e-08, 1, 0, -2, -4.37114e-08, 0, 0, 0 )
+mesh = SubResource( 1 )
+material/0 = SubResource( 2 )
+
+[node name="MeshInstance2" type="MeshInstance" parent="."]
+transform = Transform( -8.74228e-08, 0, 1, 0, 2, 0, -2, 0, -4.37114e-08, -1, 1, 0 )
+mesh = SubResource( 1 )
+material/0 = SubResource( 2 )
+
+[node name="MeshInstance3" type="MeshInstance" parent="."]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 1, 0, 1, -1 )
+mesh = SubResource( 1 )
+material/0 = SubResource( 2 )
+
+[node name="MeshInstance4" type="MeshInstance" parent="."]
+transform = Transform( -8.74228e-08, 0, -1, 0, 2, 0, 2, 0, -4.37114e-08, 1, 1, 0 )
+mesh = SubResource( 1 )
+material/0 = SubResource( 2 )
+
+[node name="OmniLight" type="OmniLight" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.10768, 0 )
+
+[node name="MeshInstance5" type="MeshInstance" parent="."]
+transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -0.747966, 0.105284, -0.4 )
+mesh = SubResource( 3 )
+material/0 = SubResource( 4 )
+
+[node name="MeshInstance6" type="MeshInstance" parent="."]
+transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.652034, 0.105284, -0.8 )
+mesh = SubResource( 3 )
+material/0 = SubResource( 4 )
+
+[node name="MeshInstance7" type="MeshInstance" parent="."]
+transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.852034, 0.105284, 0.3 )
+mesh = SubResource( 3 )
+material/0 = SubResource( 4 )
+
+[node name="Camera" type="Camera" parent="."]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Camera"]
+
+[node name="Menu" type="Control" parent="Camera/CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="MarginContainer" type="MarginContainer" parent="Camera/CanvasLayer/Menu"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 1 )
+custom_constants/margin_top = 80
+custom_constants/margin_left = 60
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Camera/CanvasLayer/Menu/MarginContainer"]
+margin_left = 60.0
+margin_top = 80.0
+margin_right = 1024.0
+margin_bottom = 600.0
+
+[node name="lblTitle" type="Label" parent="Camera/CanvasLayer/Menu/MarginContainer/VBoxContainer"]
+margin_right = 238.0
+margin_bottom = 66.0
+size_flags_horizontal = 0
+custom_fonts/font = SubResource( 6 )
+text = "Game Title"
+
+[node name="MarginContainer" type="MarginContainer" parent="Camera/CanvasLayer/Menu/MarginContainer/VBoxContainer"]
+margin_top = 70.0
+margin_right = 964.0
+margin_bottom = 150.0
+rect_min_size = Vector2( 0, 80 )
+
+[node name="btnStart" type="Button" parent="Camera/CanvasLayer/Menu/MarginContainer/VBoxContainer"]
+margin_top = 154.0
+margin_right = 166.667
+margin_bottom = 198.0
+size_flags_horizontal = 0
+custom_fonts/font = SubResource( 8 )
+text = "Start Game"
+
+[node name="btnSettings" type="Button" parent="Camera/CanvasLayer/Menu/MarginContainer/VBoxContainer"]
+margin_top = 202.0
+margin_right = 125.667
+margin_bottom = 246.0
+size_flags_horizontal = 0
+custom_fonts/font = SubResource( 8 )
+text = "Settings"
+
+[node name="btnQuit" type="Button" parent="Camera/CanvasLayer/Menu/MarginContainer/VBoxContainer"]
+margin_top = 250.0
+margin_right = 62.0
+margin_bottom = 294.0
+size_flags_horizontal = 0
+custom_fonts/font = SubResource( 8 )
+text = "Quit"

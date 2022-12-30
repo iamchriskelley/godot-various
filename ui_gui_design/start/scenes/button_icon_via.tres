@@ -1,0 +1,5 @@
+[gd_resource type="StreamTexture" format=2]
+
+[resource]
+flags = 4
+load_path = "res://.import/button_icon_via.png-43c1f9e4e11845dd06d08ebec4755c9f.stex"
