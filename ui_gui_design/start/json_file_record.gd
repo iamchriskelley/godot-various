@@ -22,7 +22,7 @@ func _init():
 	self.filepath = ""
 	self.json_string = ""
 	self.json_dict = {}
-	self.created_ts = Time.get_unix_time_from_system()
+	self.created_ts = Helpers.ts()
 	self.loaded_ts = -1.0
 	self.json_string_length = 0
 	self.valid_json = false
@@ -37,12 +37,11 @@ func set_file_details(var fullname, var fpath, var fname):
 func set_json_string(var json:String):
 	self.json_string = json
 	self.json_string_length = len(json)
-	self.loaded_ts = Time.get_unix_time_from_system()
+	self.loaded_ts = Helpers.ts()
 
 func set_json_dict(var jdict:Dictionary):
 	self.json_dict = jdict
 	self.valid_json = true
-	self.loaded_ts = Time.get_unix_time_from_system()
 
 func set_edacity_type(var type:String, var valid:bool):
 	self.edacity_record_type = type

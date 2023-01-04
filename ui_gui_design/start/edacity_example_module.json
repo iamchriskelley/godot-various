@@ -9,10 +9,8 @@
   "description": "candidate uc-based light driver for the PRISMO field spectrometer",
   "syntax": "verbose",
   "types": {
-	  "thing_types":{
-		  "component_types":[],
-		  "connection_types":[]
-	  },
+	  "thing_component_types":[],
+	  "thing_connection_types":[],
 	  "layers":[],
 	  "text_styles":[],
 	  "trace_styles":[]

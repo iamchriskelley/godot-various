@@ -1,24 +1,18 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://scenes/GameManager.gd" type="Script" id=1]
-[ext_resource path="res://scenes/OpenDialog.tscn" type="PackedScene" id=2]
+[ext_resource path="res://StateManager.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/EventManager.tscn" type="PackedScene" id=3]
+[ext_resource path="res://JSONHandler.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/GridManager.tscn" type="PackedScene" id=6]
 
-[node name="Node" type="Node"]
+[node name="GameManager" type="Node2D"]
 script = ExtResource( 1 )
 
-[node name="Control" type="Control" parent="."]
-anchor_right = 1.0
-anchor_bottom = 1.0
+[node name="JSONHandler" parent="." instance=ExtResource( 5 )]
 
-[node name="JSONGetSet" parent="Control" instance=ExtResource( 2 )]
+[node name="StateManager" parent="." instance=ExtResource( 2 )]
 
-[node name="TextEdit" type="TextEdit" parent="Control"]
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = -500.0
-margin_top = -500.0
-grow_horizontal = 0
-grow_vertical = 0
-rect_min_size = Vector2( 500, 500 )
+[node name="EventManager" parent="." instance=ExtResource( 3 )]
+
+[node name="GridManager" parent="." instance=ExtResource( 6 )]

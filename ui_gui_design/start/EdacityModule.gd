@@ -33,6 +33,15 @@ func _init():
 	pass
 
 func ingest_json_record(var jr: JSONFileRecord):
+	self.created_timestamp = Helpers.ts()
+	var jd = jr.json_dict
+
 	self.json_record = jr
-	print("Attempting to ingest and validate Edacity record with uid [", jr.json_dict["uid"],"]")
+	self.uid = jd["uid"]
+	self.notes = jd["notes"]
+	self.module_name = jd["name"]
+	self.description = jd["description"]
+	self.syntax = jd["syntax"]
+
+	print("Attempting to ingest and validate Edacity record with uid [", self.uid,"]")
 	pass

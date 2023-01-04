@@ -5,15 +5,26 @@
 [ext_resource path="res://scenes/OpenDialog.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/ButtonFlowGrid.tscn" type="PackedScene" id=4]
 
-[node name="Edacity_UI_mockup_0" type="Control"]
+[node name="Edacity_UI_20221231" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+mouse_filter = 2
 
 [node name="ButtonGrid" parent="." instance=ExtResource( 2 )]
 visible = false
 
 [node name="ButtonFlowGrid" parent="." instance=ExtResource( 4 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 256.0
+margin_bottom = 256.0
+rect_min_size = Vector2( 256, 256 )
 
 [node name="GameStateLabel" parent="." instance=ExtResource( 1 )]
+anchor_left = 1.0
+anchor_bottom = 0.0
+margin_left = -200.0
+margin_bottom = 150.0
+rect_min_size = Vector2( 200, 150 )
 
 [node name="OpenDialog" parent="." instance=ExtResource( 3 )]

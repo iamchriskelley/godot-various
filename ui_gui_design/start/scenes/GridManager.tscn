@@ -1,0 +1,108 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://GridManager.gd" type="Script" id=1]
+[ext_resource path="res://scenes/optGridOption.gd" type="Script" id=2]
+
+[node name="GridManager" type="Node2D"]
+position = Vector2( 555, 320 )
+script = ExtResource( 1 )
+
+[node name="wdg" type="WindowDialog" parent="."]
+visible = true
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -128.0
+margin_top = -64.0
+margin_right = 128.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 256, 100 )
+mouse_filter = 2
+window_title = "Grid Menu"
+
+[node name="m" type="MarginContainer" parent="wdg"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 16.0
+margin_top = 5.0
+margin_right = -16.0
+margin_bottom = -16.0
+
+[node name="vbx" type="VBoxContainer" parent="wdg/m"]
+margin_right = 224.0
+margin_bottom = 107.0
+rect_min_size = Vector2( 220, 80 )
+
+[node name="grid_size" type="HBoxContainer" parent="wdg/m/vbx"]
+margin_right = 224.0
+margin_bottom = 33.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="wdg/m/vbx/grid_size"]
+margin_top = 9.0
+margin_right = 100.0
+margin_bottom = 23.0
+rect_min_size = Vector2( 100, 0 )
+text = "Size"
+
+[node name="LineEdit" type="LineEdit" parent="wdg/m/vbx/grid_size"]
+margin_left = 104.0
+margin_top = 4.0
+margin_right = 224.0
+margin_bottom = 28.0
+size_flags_horizontal = 3
+size_flags_vertical = 4
+
+[node name="grid_units" type="HBoxContainer" parent="wdg/m/vbx"]
+margin_top = 37.0
+margin_right = 224.0
+margin_bottom = 70.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="wdg/m/vbx/grid_units"]
+margin_top = 9.0
+margin_right = 100.0
+margin_bottom = 23.0
+rect_min_size = Vector2( 100, 0 )
+text = "Units"
+
+[node name="optGridOption" type="OptionButton" parent="wdg/m/vbx/grid_units"]
+margin_left = 104.0
+margin_top = 6.0
+margin_right = 224.0
+margin_bottom = 26.0
+size_flags_horizontal = 3
+size_flags_vertical = 4
+script = ExtResource( 2 )
+
+[node name="modal_buttons" type="HBoxContainer" parent="wdg/m/vbx"]
+margin_top = 74.0
+margin_right = 224.0
+margin_bottom = 107.0
+size_flags_vertical = 3
+custom_constants/separation = 10
+
+[node name="btnOkay" type="Button" parent="wdg/m/vbx/modal_buttons"]
+margin_top = 8.0
+margin_right = 107.0
+margin_bottom = 33.0
+rect_min_size = Vector2( 0, 25 )
+size_flags_horizontal = 3
+size_flags_vertical = 8
+text = "OK"
+
+[node name="btnCancel" type="Button" parent="wdg/m/vbx/modal_buttons"]
+margin_left = 117.0
+margin_top = 8.0
+margin_right = 224.0
+margin_bottom = 33.0
+rect_min_size = Vector2( 0, 25 )
+size_flags_horizontal = 3
+size_flags_vertical = 8
+text = "Cancel"
+
+[connection signal="pressed" from="wdg/m/vbx/modal_buttons/btnOkay" to="." method="_on_btnOkay_pressed"]
+[connection signal="pressed" from="wdg/m/vbx/modal_buttons/btnCancel" to="." method="_on_btnCancel_pressed"]

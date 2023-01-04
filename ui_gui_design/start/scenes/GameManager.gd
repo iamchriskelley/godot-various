@@ -1,20 +1,37 @@
-extends Node
+extends Node2D
 
 signal load_file_dialog(open_tag)
 signal update_game_state_label(game_state)
 
-onready var json_handler = $Control/JSONGetSet
-onready var hidden_text = $Control/TextEdit
+onready var state_manager = $StateManager
+onready var json_handler = $JSONHandler
+onready var grid_manager = $GridManager
 
 var json_records = {}
-
-var game_state_history = ["REST"]
 
 func _ready():
 	pass
 
+func _input(event:InputEvent):
+	if not (event is InputEventMouseMotion):
+		#print(event.as_text())
+		if event.is_action_pressed("escape"):
+			reset_game_state(event)
+		elif event.is_action_pressed("quit"):
+			quit_with_notification()
+		
+		
+	#	if event is InputEventKey:
+	#		var keycode = event.as_text()
+	#		if keycode
+
+func reset_game_state(var event:InputEvent):
+	print("resetting game state")
+	state_manager.set_game_state("self", "REST")
+
 func quit_with_notification():
-	get_tree().notification(MainLoop.NOTIFICATION_WM_QUIT_REQUEST)
+	print("goodbye")
+	Helpers.quit()
 
 func broadcast_action(var name:String, var action:String):
 	print(name + ": " + action)
@@ -23,62 +40,33 @@ func broadcast_action(var name:String, var action:String):
 func report_error_stub(var name:String):
 	print("GameManager: ERROR reported by [",name,"]")
 
-func set_game_state(var name:String, var game_state_tag:String):
-	print("Command #" + String(game_state_history.size()) + ": "+ name + " [" + game_state_tag + "]")
-	game_state_history.push_back(game_state_tag)
-	emit_signal("update_game_state_label", game_state_tag)
+func open_grid_manager():
+	grid_manager.move_to(get_viewport_rect().size / 2)
+	grid_manager.open()
+
+func get_json_file_details(var game_state_current:String):
+	json_handler.get_json_file_details(game_state_current)
+
+func update_game_state_label(var game_state_string:String):
+	emit_signal("update_game_state_label", game_state_string)
+
+func set_state_request(var requester_category, var requester_name, var game_state_tag):
+	state_manager.set_game_state(requester_name, game_state_tag)
 	
-	if game_state_tag == "LOAD":
-		print("GameManager emitting file dialog signal")
-		#emit_signal("load_file_dialog", game_state_tag)
-		json_handler.get_json_file_details(game_state_tag)
-	elif game_state_tag == "QUIT":
-		quit_with_notification()
-	pass
+func game_object_clicked(var name:String):
+	print("Game state [", state_manager.get_state(),"], object [", name, "] is clicked!")
 
 func load_json_file(var file_info:Array):
-	var ffull = file_info[0]
-	var fpath = file_info[1]
 	var fname = file_info[2]
-	var jr = JSONFileRecord.new()
-	jr.set_file_details(ffull, fpath, fname)
-	
-	var f = File.new()
-	f.open(jr.fullname, File.READ)
-	var file_content = f.get_as_text()
-	f.close()
-	
-	jr.set_json_string(file_content)
-	#print("Attempting JSON parse")
-	var j = JSON.parse(file_content)
-	#print(j.result)
-	if typeof(j.result) == TYPE_DICTIONARY:
-		print("JSON parsed")
-		jr.set_json_dict(j.result)
-	else:
-		print("JSON parse failed")
-		push_error("JSON parse failed")
-		return -1
-	
-	var vinfo = validate_edacity_record(jr)
-	jr.set_edacity_type(vinfo[0], vinfo[1])
-	
+	var jr = json_handler.load_json_file(file_info)
 	json_records[fname] = jr
 	json_records[fname].display()
-	
 	load_edacity_record_into_scene(jr)
 	
-
-func validate_edacity_record(var edacity_record:JSONFileRecord):
-	return ["DEBUG", true]
-
 func load_edacity_record_into_scene(var edacity_record:JSONFileRecord):
-	
-	debug_text_display(edacity_record.json_string)
+	json_handler.debug_text_display(edacity_record.json_string)
 	var em = EdacityModule.new()
 	em.ingest_json_record(edacity_record)
 	print("TIME TO LOAD AN EDACITY MODULE INTO SCENE AND DISPLAY IT")
 	pass
-
-func debug_text_display(var text:String):
-	hidden_text.text = text
+	
